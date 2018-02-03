@@ -1,28 +1,36 @@
-#! /usr/bin/python3
+#! /bin/python3
 
-import numbers
+class Person:
+    age = 0
+
+    def __init__(self,initialAge):
+        if(initialAge < 0):
+            print("Age is not valid, setting age to 0.")
+            self.age = 0
+        else:
+            self.age = initialAge
+
+    def amIOld(self):
+        if(self.age < 13):
+            print ("You are young.")
+        elif(self.age >= 13 and self.age < 18 ):
+            print ("You are a teenager.")
+        else:
+            print("You are old.")
+
+    def yearPasses(self):
+        self.age = self.age + 1
 
 
-def check(number):
-    try:
-        if number.is_integer():
-            return True
-    except AttributeError:
-        return False
 
 def main():
-    N = int(input().strip())
-    N_test = N/2
-    if check(N_test):
-        if (N>1 and N<6):
-            print("Not Weird")
-        elif(N>6 and N<21):
-            print("Weird")
-        elif(N>21):
-            print("Not Weird")
-    else:
-        print("Weird")
+    t = int(input())
+    p = Person(t)
+    p.amIOld()
+    for j in range(0, 3):
+        p.yearPasses()
+    p.amIOld()
+    print("")
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
